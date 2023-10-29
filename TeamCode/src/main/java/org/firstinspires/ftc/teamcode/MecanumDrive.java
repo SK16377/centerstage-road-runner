@@ -132,10 +132,10 @@ public final class MecanumDrive {
 
             //TODO Step 4.2 Run MecanumDirectionDebugger Tuning OpMode to set motor direction correctly
             //Uncomment the lines for which the motorDirection need to be reversed to ensure all motors run forward in test
-            //leftFront.setDirection(DcMotorEx.Direction.REVERSE);
-            //leftBack.setDirection(DcMotorEx.Direction.REVERSE);
-            rightBack.setDirection(DcMotorEx.Direction.REVERSE);
-            rightFront.setDirection(DcMotorEx.Direction.REVERSE);
+            leftFront.setDirection(DcMotorEx.Direction.REVERSE);
+            leftBack.setDirection(DcMotorEx.Direction.REVERSE);
+            rightBack.setDirection(DcMotorEx.Direction.FORWARD);
+            rightFront.setDirection(DcMotorEx.Direction.FORWARD);
             //TODO End Step 4.2
 
             lastLeftFrontPos = leftFront.getPositionAndVelocity().position;
@@ -198,21 +198,21 @@ public final class MecanumDrive {
             module.setBulkCachingMode(LynxModule.BulkCachingMode.AUTO);
         }
 
-        //TODO Step 1 Drive Classes : get basic hardware configured. Update motor names to what is used in robot configuration
-        leftFront = hardwareMap.get(DcMotorEx.class, "leftFront");
-        leftBack = hardwareMap.get(DcMotorEx.class, "leftBack");
-        rightBack = hardwareMap.get(DcMotorEx.class, "rightBack");
-        rightFront = hardwareMap.get(DcMotorEx.class, "rightFront");
-        //TODO End Step 1
+        // Step 1 Drive Classes : get basic hardware configured. Update motor names to what is used in robot configuration
+        leftFront = hardwareMap.get(DcMotorEx.class, "lf");
+        leftBack = hardwareMap.get(DcMotorEx.class, "lb");
+        rightBack = hardwareMap.get(DcMotorEx.class, "rb");
+        rightFront = hardwareMap.get(DcMotorEx.class, "rf");
+        // End Step 1
 
-        //TODO Step 4.1 Run MecanumDirectionDebugger Tuning OpMode to set motor direction correctly
+        // Step 4.1 Run MecanumDirectionDebugger Tuning OpMode to set motor direction correctly
         //Uncomment the lines for which the motorDirection need to be reversed to ensure all motors run forward in test
-        //leftFront.setDirection(DcMotorEx.Direction.REVERSE);
-        //leftBack.setDirection(DcMotorEx.Direction.REVERSE);
-        rightFront.setDirection(DcMotorEx.Direction.REVERSE);
-        rightBack.setDirection(DcMotorEx.Direction.REVERSE);
-        //TODO Make the same update in DriveLocalizer() function. Search for Step 4.2
-        //TODO End Step 4.1
+        leftFront.setDirection(DcMotorEx.Direction.REVERSE);
+        leftBack.setDirection(DcMotorEx.Direction.REVERSE);
+        rightFront.setDirection(DcMotorEx.Direction.FORWARD);
+        rightBack.setDirection(DcMotorEx.Direction.FORWARD);
+        // Make the same update in DriveLocalizer() function. Search for Step 4.2
+        // End Step 4.1
 
 
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -221,16 +221,16 @@ public final class MecanumDrive {
         rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         imu = hardwareMap.get(IMU.class, "imu");
-        //TODO Step 2 : Update direction of IMU by updating orientation of Driver Hub below
+        // Step 2 : Update direction of IMU by updating orientation of Driver Hub below
         IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
-                RevHubOrientationOnRobot.LogoFacingDirection.UP, // Change to UP / DOWN / LEFT / RIGHT / FORWARD / BACKWARD as in robot
-                RevHubOrientationOnRobot.UsbFacingDirection.FORWARD)); //Change to UP / DOWN / LEFT / RIGHT / FORWARD / BACKWARD
+                RevHubOrientationOnRobot.LogoFacingDirection.LEFT, // Change to UP / DOWN / LEFT / RIGHT / FORWARD / BACKWARD as in robot
+                RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD)); //Change to UP / DOWN / LEFT / RIGHT / FORWARD / BACKWARD
         imu.initialize(parameters);
-        //TODO End Step 2
+        // End Step 2
 
         voltageSensor = hardwareMap.voltageSensor.iterator().next();
 
-        //TODO Step 3: Specify how the robot should track its position
+        // Step 3: Specify how the robot should track its position
         //Comment this line if NOT using Drive Encoder localization
         localizer = new DriveLocalizer();
         //Uncomment next line if using Two Dead Wheel Localizer and also check TwoDeadWheelLocalizer.java for Step 3.1
@@ -238,7 +238,7 @@ public final class MecanumDrive {
 
         //Uncomment next line if using Three Dead Wheel Localizer and also check ThreeDeadWheelLocalizer.java for Step 3.1
         //localizer = new ThreeDeadWheelLocalizer(hardwareMap, PARAMS.inPerTick)
-        //TODO End Step 3
+        // End Step 3
 
         FlightRecorder.write("MECANUM_PARAMS", PARAMS);
     }
