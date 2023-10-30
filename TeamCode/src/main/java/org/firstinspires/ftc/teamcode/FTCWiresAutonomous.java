@@ -123,7 +123,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
         MecanumDrive drive = new MecanumDrive(hardwareMap, initPose);
 
         initPose = new Pose2d(0, 0, Math.toRadians(0)); //Starting pose
-        moveBeyondTrussPose = new Pose2d(15,0,0);
+        moveBeyondTrussPose = new Pose2d(-15,0,0);
 
         switch (startPosition) {
             case BLUE_LEFT:
@@ -151,21 +151,21 @@ public class FTCWiresAutonomous extends LinearOpMode {
                 drive = new MecanumDrive(hardwareMap, initPose);
                 switch(identifiedSpikeMarkLocation){
                     case LEFT:
-                        dropPurplePixelPose = new Pose2d(30, 9, Math.toRadians(45));
-                        dropYellowPixelPose = new Pose2d(21, -36, Math.toRadians(90));
+                        dropPurplePixelPose = new Pose2d(-30, -9, Math.toRadians(-45));
+                       // dropYellowPixelPose = new Pose2d(21, -36, Math.toRadians(90));
                         break;
                     case MIDDLE:
-                        dropPurplePixelPose = new Pose2d(30, -3, Math.toRadians(0));
-                        dropYellowPixelPose = new Pose2d(29, -36,  Math.toRadians(90));
+                        dropPurplePixelPose = new Pose2d(-30, 3, Math.toRadians(0));
+                        //dropYellowPixelPose = new Pose2d(29, -36,  Math.toRadians(90));
                         break;
                     case RIGHT:
-                        dropPurplePixelPose = new Pose2d(26, -8, Math.toRadians(0));
-                        dropYellowPixelPose = new Pose2d(37, -36, Math.toRadians(90));
+                        dropPurplePixelPose = new Pose2d(-26, 8, Math.toRadians(0));
+                       // dropYellowPixelPose = new Pose2d(37, -36, Math.toRadians(90));
                         break;
                 }
-                midwayPose1 = new Pose2d(14, -13, Math.toRadians(45));
-                waitSecondsBeforeDrop = 2; //TODO: Adjust time to wait for alliance partner to move from board
-                parkPose = new Pose2d(8, -30, Math.toRadians(90));
+                midwayPose1 = new Pose2d(-14, 13, Math.toRadians(-45));
+                waitSecondsBeforeDrop = 0; //TODO: Adjust time to wait for alliance partner to move from board
+                parkPose = new Pose2d(-8, 30, Math.toRadians(-90));
                 break;
 
             case BLUE_RIGHT:
@@ -188,7 +188,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
                 midwayPose1a = new Pose2d(18, -18, Math.toRadians(-90));
                 intakeStack = new Pose2d(52, -19,Math.toRadians(-90));
                 midwayPose2 = new Pose2d(52, 62, Math.toRadians(-90));
-                waitSecondsBeforeDrop = 2; //TODO: Adjust time to wait for alliance partner to move from board
+                waitSecondsBeforeDrop = 0; //TODO: Adjust time to wait for alliance partner to move from board
                 parkPose = new Pose2d(50, 84, Math.toRadians(-90));
                 break;
 
@@ -212,7 +212,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
                 midwayPose1a = new Pose2d(18, 18, Math.toRadians(90));
                 intakeStack = new Pose2d(52, 19,Math.toRadians(90));
                 midwayPose2 = new Pose2d(52, -62, Math.toRadians(90));
-                waitSecondsBeforeDrop = 2; //TODO: Adjust time to wait for alliance partner to move from board
+                waitSecondsBeforeDrop = 0; //TODO: Adjust time to wait for alliance partner to move from board
                 parkPose = new Pose2d(50, -84, Math.toRadians(90));
                 break;
         }
