@@ -69,7 +69,7 @@ public final class MecanumDrive {
         public double kV = 0.004271239982351075;
 
         //TODO Step 12 Set value of kA after running ManualFeedforwardTuner. In this emperical process update value in increments of 0.0001
-        public double kA = 0;
+        public double kA = 0.0006;
 
         // path profile parameters (in inches)
         public double maxWheelVel = 50;
@@ -82,9 +82,9 @@ public final class MecanumDrive {
 
         // path controller gains
         //TODO Step 13 Set value of Gains after running ManualFeedbackTuner
-        public double axialGain = 0.0;
-        public double lateralGain = 0.0;
-        public double headingGain = 0.0; // shared with turn
+        public double axialGain = 3.0;
+        public double lateralGain = 1.0;
+        public double headingGain = 3.5; // shared with turn
 
         public double axialVelGain = 0.0;
         public double lateralVelGain = 0.0;
